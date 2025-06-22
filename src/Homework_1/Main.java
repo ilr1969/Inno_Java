@@ -12,6 +12,8 @@ public class Main {
 
         System.out.println("\n");
 
+//        Задание со *
+
         TestParsing testParsing = new TestParsing();
 
 //        Тут нужен комментарий, нужно ли выдёргивать параметр аннотации метода
