@@ -31,4 +31,5 @@ public class MyClass {
     public void Calc6() {
         System.out.println("Приоритет 9");
     }
+
 }
