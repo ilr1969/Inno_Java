@@ -6,9 +6,8 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Main {
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-        MyClass myClass = new MyClass();
         TestRunner runner = new TestRunner();
-        runner.runTests(myClass);
+        runner.runTests(MyClass.class);
 
         System.out.println("\n");
 

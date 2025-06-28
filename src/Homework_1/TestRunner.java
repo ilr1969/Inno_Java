@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class TestRunner {
-    public static void runTests(MyClass myClass) throws InvocationTargetException, IllegalAccessException {
+    public static void runTests(Class c) throws InvocationTargetException, IllegalAccessException {
+        Class myClass = c.asSubclass(Object.class);
         int beforeSuiteCount = 0;
         int afterSuiteCount = 0;
 
-        for (Method method : myClass.getClass().getDeclaredMethods()) {
+        for (Method method : myClass.getMethods()) {
 
             if (method.isAnnotationPresent(BeforeSuite.class)) {
                 beforeSuiteCount++;
@@ -28,7 +29,7 @@ public class TestRunner {
         }
 
         if (beforeSuiteCount == 1) {
-            for (Method method : myClass.getClass().getDeclaredMethods()) {
+            for (Method method : myClass.getMethods()) {
                 if (method.isAnnotationPresent(BeforeSuite.class)) {
                     method.invoke(myClass);
                 }
