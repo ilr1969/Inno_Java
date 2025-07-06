@@ -37,14 +37,17 @@ public class TestRunner {
         }
 
         var listTestMethods = new ArrayList<Method>();
-        for (Method method : myClass.getClass().getDeclaredMethods()) {
+        for (Method method : myClass.getClass()
+                .getDeclaredMethods()) {
             if (method.isAnnotationPresent(Test.class)) {
                 listTestMethods.add(method);
 
             }
         }
 
-        var sortedByPriority = listTestMethods.stream().sorted(Comparator.comparing(m -> m.getAnnotation(Test.class).priority()));
+        var sortedByPriority = listTestMethods.stream()
+                .sorted(Comparator.comparing(m -> m.getAnnotation(Test.class)
+                        .priority()));
 
         sortedByPriority.forEach(result -> {
             try {
@@ -57,7 +60,8 @@ public class TestRunner {
         });
 
         if (afterSuiteCount == 1) {
-            for (Method method : myClass.getClass().getDeclaredMethods()) {
+            for (Method method : myClass.getClass()
+                    .getDeclaredMethods()) {
                 if (method.isAnnotationPresent(AfterSuite.class)) {
                     method.invoke(myClass);
                 }
